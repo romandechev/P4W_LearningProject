@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="container">
+  <h1>Parameters</h1>
+</div>
+<div class="container">
+  <p>Page Version: {{ pageVersion }}</p>
+</div>
+<div class="container">
+  {% if pageVersion == "default" %}
+  <p>This is the html for the default version of the page</p>
+  {% elif pageVersion == "alternate" %}
+  <p>Alternate page version</p>
+  {% else %}
+  <p>Catch all if we don't recognise the page version</p>
+  {% endif %}
+</div>
+{% endblock %}
