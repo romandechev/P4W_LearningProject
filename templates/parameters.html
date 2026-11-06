@@ -10,6 +10,8 @@
   <p>This is the html for the default version of the page</p>
   {% elif pageVersion == "alternate" %}
   <p>Alternate page version</p>
+  {% elif pageVersion == "blocked" %}
+  <p>Blocked page version</p>
   {% else %}
   <p>Catch all if we don't recognise the page version</p>
   {% endif %}

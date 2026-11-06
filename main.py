@@ -10,14 +10,20 @@ app = Flask(__name__)
 is_logged_in = False
 
 
-@app.route("/hello", methods=["GET"])
-def hello_page():
-    return "foobar"
+# @app.route("/hello", methods=["GET"])
+# def hello_page_foo():
+#     return "foo"
+
+
+# @app.route("/hello", methods=["POST"])
+# def hello_page_bar():
+#     return "bar"
 
 
 @app.route("/", methods=["POST", "GET"])
 @app.route("/index.html", methods=["GET", "POST"])
 def index_page():
+
     global is_logged_in
 
     # If we receive a POST request, then attempt to login
@@ -39,6 +45,16 @@ def index_page():
         is_logged_in = False
 
     return render_template("index.html", logged_in=is_logged_in), 200
+
+
+# Define the route for the parameters page
+@app.route("/parameters.html", methods=["GET"])
+def parameters_page():
+    # Access the request object to get the value of the URL parameter
+    # If the URL parameter isn't in the URL string, then set the value to "default"
+    pageVer = request.args.get("ver", "default")
+
+    return render_template("parameters.html", pageVersion=pageVer), 200
 
 
 if __name__ == "__main__":
